@@ -221,9 +221,9 @@
 			transform: translate(-50%,-50%);
 			width: 98vw;
 			height: 80vh;
-			background-color: #db0000;
+			background-color: #FF0000;
 			text-align: center;
-			padding-top: 10vh;
+			padding-top: 25vh;
 			border-radius: 10px;
 			color: white;
 			font-size: 4vh;
@@ -248,12 +248,17 @@
 			height: 80vh;
 			background-color: #c19c13;
 			text-align: center;
-			padding-top: 10vh;
+			
 			border-radius: 10px;
 			color: white;
 			
 		}
-
+		.divOfChoose{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%)
+		}
 		.pForLanguage{
 			margin-bottom: 20px;
 			font-size: 4vh;
@@ -262,18 +267,70 @@
 			line-height: 4vh;
 			font-size: 2.5vh;
 		}
+		#divOfBeginNewWeek{
+			position: absolute;
+			display: none;
+			z-index: -1111;
+			visibility: hidden;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 98vw;
+			height: 80vh;
+			background-color: #c19c13;
+			text-align: center;
+			padding-top: 25vh;
+			border-radius: 10px;
+			color: white;
+			font-size: 4vh;
+		}
+		
+		#divOfBeginNewWeek button{
+			
+			margin: 5vh 5vh;
+			border: none;
+			background-color: #c19c13;
+			font-size: 100%;
+			color: white;
+		}
+		#tree{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: #F8F3F5;
+			background-color: #3bff00;
+			border-radius: 30%;
+			padding: 0px 2px 2px 2px; 
+			display: none;
+		}
 
 	</style>
 </head>
 <body>
 	<div id="warningOfDeleleAllInformation">
-		<h2 id="Warning">Are you sure?</h2>
-		<button id="deleteAllYes">Yes</button> <button id="deleteAllNo">No</button>
+		
+			<h2 class="Warning">Are you sure?</h2>
+
+			<button id="deleteAllYes">Yes</button> <button id="deleteAllNo">No</button>
+		
 	</div>
 	<div id="divOfLanguage">
-		<p class="pForLanguage" id="russian">Russian</p>
-		<p class="pForLanguage" id="english">English</p>
+		<div class='divOfChoose'>
+			<p class="pForLanguage" id="russian">Russian</p>
+			
+			<p class="pForLanguage" id="english">English</p>
+			
+			<p class="pForLanguage" id="chinese">Chinese</p>
+		</div>
 	</div>
+	<div id="divOfBeginNewWeek">
+		
+			<h2 class="Warning">Are you sure?</h2>
+			<button id="beginNewWeekYes">Yes</button> <button id="beginNewWeekNo">No</button>
+		
+	</div>
+
 	<div  id="main">
 		<h2 id="NameOfApp">Do it now</h2>
 		<div class="day" id="day1">
@@ -377,7 +434,9 @@
 		</div>
 		<div class="day" id="day8">
 			<h3 id="Menu">Menu</h3>
+			<div id="tree">&#10048;</div>
 			<div class="listOfToDo">
+
 				<ol id="ulOfStatistics">
 					<li class="statistics" ><span id="NumberOfCompletedTasks">Number of completed tasks: </span><ins id='numberOfCheckedToDo'></ins> </li> 
 					<li  class="statistics" id="beginNewWeek">Begin new week</li>
@@ -434,10 +493,12 @@
           statistics = NumberOfChecked;
           localStorage.setItem("statistics", statistics);
         };
-
-        
-
-
+        var languageOfSistem;
+        function toLocalOfLanguage(){
+        	languageOfSistem = flagOfLanguage;
+        	
+        	localStorage.setItem("languageOfSistem", languageOfSistem)
+        }
         //Change CSS 
 		var main = document.querySelector('#main');
 		main.addEventListener('click', function (ev) {
@@ -620,8 +681,6 @@
 			}
 		}, false);
 		//Delete from To-Do list and check of To-Do
-		
-
 		var NumberOfChecked = 0;
 		
 		var ul = document.querySelectorAll('ul');
@@ -633,8 +692,6 @@
 		       if(ev.target.classList.contains("checked")) {
 		       	   
 			       NumberOfChecked = NumberOfChecked + 1;
-			       
-			       
 			       document.getElementById('numberOfCheckedToDo').innerHTML = NumberOfChecked;
 			       toLocalOfStatistics();
 		       } else{
@@ -644,9 +701,7 @@
 			       toLocalOfStatistics();
 		       }
 		       
-		       	//Statistics
-
-			   
+		//Statistics 
 		    } else if(ev.target.tagName === "SPAN") {
 		       var div = ev.target.parentNode;
 		       div.remove();
@@ -773,10 +828,6 @@
 		    li.appendChild(span);
 		    toLocalOfSunday();
 		}
-
-	
-		
-
 		//Take data from LocalStorage
 		if(localStorage.getItem("todos")){
 	        document.getElementById('list').innerHTML = localStorage.getItem("todos");
@@ -865,9 +916,217 @@
        	if(localStorage.getItem("statistics")){
         	document.getElementById('numberOfCheckedToDo').innerHTML = localStorage.getItem("statistics");
         	NumberOfChecked = eval(document.getElementById('numberOfCheckedToDo').innerHTML);
+        	if(NumberOfChecked >= 1) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					display:block;							
+					`
+        	}
+        	if(NumberOfChecked >= 3) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size: 110%;
+					display:block;
+
+					`
+
+        	}
+        	if(NumberOfChecked >= 5) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:120%;
+					display:block;							
+					`
+        	}
+        	if(NumberOfChecked >= 10) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:130%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 15) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:140%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 20) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:145%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 30) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:150%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 35) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:155%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 50) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:160%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 60) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:170%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 70) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:175%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 80) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:180%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 90) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:190%;	
+					display:block;						
+					`
+        	}
+        	if(NumberOfChecked >= 100) {
+        		document.getElementById('tree').style.cssText = 
+        			`
+					font-size:200%;	
+					display:block;
+
+					`
+        	}
+
        	}
+       		if(localStorage.getItem("languageOfSistem")){
+       			flagOfLanguage = localStorage.getItem("languageOfSistem");
+       			if(flagOfLanguage == 1){
+        		
+        			var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "Введите новое дело...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "Добавить";
+				}
+				document.getElementById('NameOfApp').innerHTML = "Список дел";
+				document.getElementById('Monday').innerHTML = "Пн";
+				document.getElementById('Tuesday').innerHTML = "Вт";
+				document.getElementById('Wednesday').innerHTML = "Ср";
+				document.getElementById('Thursday').innerHTML = "Чт";
+				document.getElementById('Friday').innerHTML = "Пн";
+				document.getElementById('Saturday').innerHTML = "Сб";
+				document.getElementById('Sunday').innerHTML = "Вс";
+				document.getElementById('Menu').innerHTML = "Меню";
+				document.getElementById('beginNewWeek').innerHTML = "Начать новую неделю";
+				document.getElementById('deleteAll').innerHTML = "Удалить все";
+				document.getElementById('language').innerHTML = "Язык";
+				document.getElementById('russian').innerHTML = "Русский";
+				document.getElementById('english').innerHTML = "Английский";
+				document.getElementById('chinese').innerHTML = "Китайский";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "Кол-во выполненных дел: ";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "Вы уверены?";
+				}
+				document.getElementById('deleteAllYes').innerHTML = "Да";
+				document.getElementById('deleteAllNo').innerHTML = "Нет";
+				document.getElementById('beginNewWeekYes').innerHTML = "Да";
+				document.getElementById('beginNewWeekNo').innerHTML = "Нет";
 
 
+				
+        	} else if (flagOfLanguage == 2) {
+        		var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "Type here...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "Click";
+				}
+				document.getElementById('NameOfApp').innerHTML = "To-Do list";
+				document.getElementById('Monday').innerHTML = "Mo";
+				document.getElementById('Tuesday').innerHTML = "Tu";
+				document.getElementById('Wednesday').innerHTML = "We";
+				document.getElementById('Thursday').innerHTML = "Th";
+				document.getElementById('Friday').innerHTML = "Fr";
+				document.getElementById('Saturday').innerHTML = "Sa";
+				document.getElementById('Sunday').innerHTML = "Su";
+				document.getElementById('Menu').innerHTML = "Menu";
+				document.getElementById('beginNewWeek').innerHTML = "Begin new week";
+				document.getElementById('deleteAll').innerHTML = "Delete all information";
+				document.getElementById('language').innerHTML = "Language";
+				document.getElementById('russian').innerHTML = "Russian";
+				document.getElementById('english').innerHTML = "English";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "Number of completed tasks: ";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "Are you sure?";
+				}
+				document.getElementById('deleteAllYes').innerHTML = "Yes";
+				document.getElementById('deleteAllNo').innerHTML = "No";
+				document.getElementById('beginNewWeekYes').innerHTML = "Yes";
+				document.getElementById('beginNewWeekNo').innerHTML = "No";
+				
+        	}else if(flagOfLanguage == 3){
+        		var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "加";
+				}
+				document.getElementById('NameOfApp').innerHTML = "待办事项";
+				document.getElementById('Monday').innerHTML = "周一";
+				document.getElementById('Tuesday').innerHTML = "周二";
+				document.getElementById('Wednesday').innerHTML = "周三";
+				document.getElementById('Thursday').innerHTML = "周四";
+				document.getElementById('Friday').innerHTML = "周五";
+				document.getElementById('Saturday').innerHTML = "周六";
+				document.getElementById('Sunday').innerHTML = "周日";
+				document.getElementById('Menu').innerHTML = "菜单";
+				document.getElementById('beginNewWeek').innerHTML = "开始新星期";
+				document.getElementById('deleteAll').innerHTML = "删除所有的信息";
+				document.getElementById('language').innerHTML = "语言";
+				document.getElementById('russian').innerHTML = "俄语";
+				document.getElementById('english').innerHTML = "英语";
+				document.getElementById('chinese').innerHTML = "汉语";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "完成的任务数: ";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "你确定吗？";
+				}
+				document.getElementById('deleteAllYes').innerHTML = "是的";
+				document.getElementById('deleteAllNo').innerHTML = "不要";
+				document.getElementById('beginNewWeekYes').innerHTML = "是的";
+				document.getElementById('beginNewWeekNo').innerHTML = "不要";
+        	}
+
+       	}
+       	//delete all infromation
        	document.getElementById('deleteAll').onclick = function(){
 
        		document.getElementById('warningOfDeleleAllInformation').style.cssText =
@@ -920,22 +1179,14 @@
 	       		
 	       	}
        	};
-       	document.getElementById('beginNewWeek').onclick = function() {
-       		var beginNewWeek = document.querySelectorAll('li');
-			for (var i = 0; i < beginNewWeek.length; i++){
-				if(beginNewWeek[i].classList.contains("checked")) {
-			   	   	beginNewWeek[i].classList.toggle('checked');
-			   	   	toLocal();
-		       		toLocalOfTuesday();
-		       		toLocalOfWednesday();
-		       		toLocalOfThursday();
-		       		toLocalOfFriday();
-		       		toLocalOfSaturday();
-		       		toLocalOfSunday();
-		       		toLocalOfStatistics(); 
-			   	}
-	       	};
-		};
+       
+       	//language of sistem
+       	/* 0 == undefined
+       	1 == rus
+       	2 == eng
+       	3 == cn
+       	*/
+       	var flagOfLanguage = 0;
 		document.getElementById('language').onclick = function(){
 			document.getElementById('divOfLanguage').style.cssText =
 					`
@@ -945,8 +1196,10 @@
 					visibility: visible;
 					
 					`;
+			
 			document.getElementById('russian').onclick = function() {
-				
+				flagOfLanguage = 1 ;
+       			toLocalOfLanguage();
 				var inputOfText = document.getElementsByClassName('inputOfText');
 					for (var i = 0; i < inputOfText.length; i++) {
 					inputOfText[i].placeholder = "Введите новое дело...";
@@ -969,10 +1222,18 @@
 				document.getElementById('language').innerHTML = "Язык";
 				document.getElementById('russian').innerHTML = "Русский";
 				document.getElementById('english').innerHTML = "Английский";
+				document.getElementById('chinese').innerHTML = "Китайский";
 				document.getElementById('NumberOfCompletedTasks').innerHTML = "Кол-во выполненных дел: ";
-				document.getElementById('Warning').innerHTML = "Вы уверены?";
+				
 				document.getElementById('deleteAllYes').innerHTML = "Да";
 				document.getElementById('deleteAllNo').innerHTML = "Нет";
+				document.getElementById('beginNewWeekYes').innerHTML = "Да";
+				document.getElementById('beginNewWeekNo').innerHTML = "Нет";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "Вы уверены?";
+				}
+				
 
 				
 
@@ -984,10 +1245,13 @@
 					visibility: hidden;
 					
 					`;
+
+				
 			
 			}
 			document.getElementById('english').onclick = function() {
-				
+				flagOfLanguage = 2;
+       			toLocalOfLanguage();
 				var inputOfText = document.getElementsByClassName('inputOfText');
 					for (var i = 0; i < inputOfText.length; i++) {
 					inputOfText[i].placeholder = "Type here...";
@@ -1010,18 +1274,116 @@
 				document.getElementById('language').innerHTML = "Language";
 				document.getElementById('russian').innerHTML = "Russian";
 				document.getElementById('english').innerHTML = "English";
+				document.getElementById('chinese').innerHTML = "Chinese";
 				document.getElementById('NumberOfCompletedTasks').innerHTML = "Number of completed tasks: ";
-				document.getElementById('Warning').innerHTML = "Are you sure?";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "Are you sure?";
+				}
 				document.getElementById('deleteAllYes').innerHTML = "Yes";
 				document.getElementById('deleteAllNo').innerHTML = "No";
+				document.getElementById('beginNewWeekYes').innerHTML = "Yes";
+				document.getElementById('beginNewWeekNo').innerHTML = "No";
 				document.getElementById('divOfLanguage').style.cssText =
 					`
 					display: none;
 					z-index: -1111;
 					visibility: hidden;
 					`;
+				
+			};
+			document.getElementById('chinese').onclick = function() {
+				flagOfLanguage = 3;
+       			toLocalOfLanguage();
+				var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "加";
+				}
+				document.getElementById('NameOfApp').innerHTML = "待办事项";
+				document.getElementById('Monday').innerHTML = "周一";
+				document.getElementById('Tuesday').innerHTML = "周二";
+				document.getElementById('Wednesday').innerHTML = "周三";
+				document.getElementById('Thursday').innerHTML = "周四";
+				document.getElementById('Friday').innerHTML = "周五";
+				document.getElementById('Saturday').innerHTML = "周六";
+				document.getElementById('Sunday').innerHTML = "周日";
+				document.getElementById('Menu').innerHTML = "菜单";
+				document.getElementById('beginNewWeek').innerHTML = "开始新星期";
+				document.getElementById('deleteAll').innerHTML = "删除所有的信息";
+				document.getElementById('language').innerHTML = "语言";
+				document.getElementById('russian').innerHTML = "俄语";
+				document.getElementById('english').innerHTML = "英语";
+				document.getElementById('chinese').innerHTML = "汉语";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "完成的任务数: ";
+				var Warning = document.getElementsByClassName('Warning');
+				for (var i = 0; i < Warning.length; i++ ){
+					Warning[i].innerHTML = "你确定吗？";
+				}
+				document.getElementById('deleteAllYes').innerHTML = "是的";
+				document.getElementById('deleteAllNo').innerHTML = "不要";
+				document.getElementById('beginNewWeekYes').innerHTML = "是的";
+				document.getElementById('beginNewWeekNo').innerHTML = "不要";
+				document.getElementById('divOfLanguage').style.cssText =
+					`
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					`;
+				
 			};
 		};
+
+		document.getElementById('beginNewWeek').onclick = function() {
+			document.getElementById('divOfBeginNewWeek').style.cssText =
+					`
+					
+					display: block;
+					z-index: 1111;
+					visibility: visible;
+					
+					`;
+			document.getElementById("beginNewWeekYes").onclick = function(){
+
+	       		var beginNewWeek = document.querySelectorAll('li');
+				for (var i = 0; i < beginNewWeek.length; i++){
+					if(beginNewWeek[i].classList.contains("checked")) {
+				   	   	beginNewWeek[i].classList.toggle('checked');
+				   	   	toLocal();
+			       		toLocalOfTuesday();
+			       		toLocalOfWednesday();
+			       		toLocalOfThursday();
+			       		toLocalOfFriday();
+			       		toLocalOfSaturday();
+			       		toLocalOfSunday();
+			       		toLocalOfStatistics(); 
+				   	};
+		       	};
+		       		document.getElementById('divOfBeginNewWeek').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+		    }
+		    document.getElementById("beginNewWeekNo").onclick = function(){
+		    		document.getElementById('divOfBeginNewWeek').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+					
+
+		    }
+		};	
 	</script>
 </body>
 </html>
