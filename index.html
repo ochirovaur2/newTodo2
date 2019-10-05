@@ -15,19 +15,19 @@
 		}
 		#main{
 			position: fixed;
-			width: 95%;
+			width: 99%;
 			height: 10vh;
 			left: 50%;
 			transform: translate(-50%);
-			margin-top: 3vh;
+			margin-top: 1vh;
 			border-radius: 10px;
 			background-color: #343a40;
 			padding-left: 3px;
 			padding-right: 3px;
 			text-align: center;
-			line-height: 10vh;
+			font-size: 4vh;
 			color: white;
-			font-size:4vh; 
+			
  			
 
 		}
@@ -53,10 +53,11 @@
 			color: black;
 			float: left;
 			width: 25%;
-			height: 33vh;
+			height: 35vh;
 			background-color: #FECA00;
 			border: 1px solid  #EFEFEF;
-			font-size: 30px;
+			font-size: 3vh;
+
 			
 		}
 		
@@ -73,7 +74,7 @@
 			border: none;
 			text-align: center;
 			font-size: 6vh;
-			border-radius: 5px;
+			border-radius: 50%;
 			
 			
 		}
@@ -93,9 +94,7 @@
 			
 			
 		}
-		h3{
-			line-height: 7vh;
-		}
+		
 		.input{
 			position: absolute;
 			bottom: 5%;
@@ -118,12 +117,12 @@
 			visibility: hidden;
 		    height: 5vh;
 		    line-height: 5vh;
-		    width: 14vw;
+		    width: 25vw;
 		    background: #d9d9d9;
 		    color: black;
 		    float: left;
 		    text-align: center;
-		    font-size: 1em;
+		   	font-size: 3vh;
 		    cursor: pointer;
 		    
 		}
@@ -132,12 +131,13 @@
 		    background-color: #bbb;
 		}
 		.listOfToDo{
-			width: 90%;
+			width: 97%;
 			margin: 0 auto;
-			height: 16vh;
+			height: 20vh;
 			background-color: inherit;
 			overflow-y: auto;
-
+			font-size: 2vh;
+			
 		}
 		ul {
 		    margin: 0;
@@ -149,6 +149,7 @@
 		    cursor: pointer;
 		    position: relative;
 		    padding: 12px 0px 12px 0px;
+			
 		    color: black;
 		    background: #FECA00;
 		    line-height: 3vh;
@@ -204,7 +205,9 @@
 
 		}
 		.statistics{
-			line-height:30px;
+			display: none;
+			z-index: -1111;
+			visibility: hidden;
 			margin-bottom: 10px;
 
 		}
@@ -216,20 +219,21 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%,-50%);
-			width: 50vw;
-			height: 50vh;
+			width: 98vw;
+			height: 80vh;
 			background-color: #db0000;
 			text-align: center;
 			padding-top: 10vh;
 			border-radius: 10px;
 			color: white;
+			font-size: 4vh;
 		}
 		#warningOfDeleleAllInformation button{
 			
 			margin: 5vh 5vh;
 			border: none;
 			background-color: #db0000;
-			font-size: 120%;
+			font-size: 100%;
 			color: white;
 		}
 		#divOfLanguage{
@@ -240,17 +244,23 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%,-50%);
-			width: 50vw;
-			height: 50vh;
+			width: 98vw;
+			height: 80vh;
 			background-color: #c19c13;
 			text-align: center;
 			padding-top: 10vh;
 			border-radius: 10px;
 			color: white;
+			
 		}
+
 		.pForLanguage{
 			margin-bottom: 20px;
-			font-size: 40px;
+			font-size: 4vh;
+		}
+		#Menu{
+			line-height: 4vh;
+			font-size: 2.5vh;
 		}
 
 	</style>
@@ -267,7 +277,7 @@
 	<div  id="main">
 		<h2 id="NameOfApp">Do it now</h2>
 		<div class="day" id="day1">
-			<h3 id="Monday">Monday</h3>
+			<h3 id="Monday">Mo</h3>
 			<div class="listOfToDo">
 				<ul  id="list">
 					
@@ -282,7 +292,7 @@
 			
 		</div>
 		<div class="day" id="day2">
-			<h3 id="Tuesday">Tuesday</h3>
+			<h3 id="Tuesday">Tu</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfTuesday">
 					
@@ -296,7 +306,7 @@
 			<button class="btn2">&#9745;</button>
 		</div>
 		<div class="day" id="day3">
-			<h3 id="Wednesday">Wednesday</h3>
+			<h3 id="Wednesday">We</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfWednesday">
 					
@@ -310,7 +320,7 @@
 			<button class="btn2">&#9745;</button>
 		</div>
 		<div class="day" id="day4">
-			<h3 id="Thursday">Thursday</h3>
+			<h3 id="Thursday">Th</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfThursday">
 					
@@ -324,7 +334,7 @@
 			<button class="btn2">&#9745;</button>
 		</div>
 		<div class="day" id="day5">
-			<h3 id="Friday">Friday</h3>
+			<h3 id="Friday">Fr</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfFriday">
 					
@@ -338,7 +348,7 @@
 			<button class="btn2">&#9745;</button>
 		</div>
 		<div class="day" id="day6">
-			<h3 id="Saturday">Saturday</h3>
+			<h3 id="Saturday">Sa</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfSaturday">
 					
@@ -352,7 +362,7 @@
 			<button class="btn2">&#9745;</button>
 		</div>
 		<div class="day" id="day7">
-			<h3 id="Sunday">Sunday</h3> 
+			<h3 id="Sunday">Su</h3> 
 			<div class="listOfToDo">
 				<ul  id="listOfSunday">
 					
@@ -438,16 +448,17 @@
 				`
 				
 				visibility: hidden;
+				display: none;
 				
 				`
 				;}
 		       ev.target.parentElement.style.cssText =
 				`
-				position: absolute;
+				
 				
 				z-index: 2;
 				width: 100%;
-				height: 70vh;
+				height: 80vh;
 
 				`;
 				ev.target.style.cssText =
@@ -457,6 +468,17 @@
 				visibility: hidden;
 				
 				`;
+				var statisticsOfToDo = document.getElementsByClassName('statistics');
+				for (var i = 0; i < statisticsOfToDo.length; i++) {
+					statisticsOfToDo[i].style.cssText =
+				`
+				
+				display: block;
+				z-index: 1111;
+				visibility: visible;
+				
+				`
+				;}
 				var btn2 = document.getElementsByClassName('btn2');
 				for (var i = 0; i < btn2.length; i++) {
 					btn2[i].style.cssText =
@@ -490,6 +512,7 @@
 				`
 				
 				height: 45vh;
+				font-size: 3vh;
 				
 				`
 				;}
@@ -502,6 +525,7 @@
 				
 				`
 				;}
+
 				
 				
 		    } 
@@ -514,7 +538,7 @@
 				position: relative;
 				z-index: auto;
 				width: 25%;
-				height: 33vh;
+				height: 38vh;
 				transition: .2s;
 				`;
 				var btn = document.getElementsByClassName('btn');
@@ -523,6 +547,17 @@
 				`
 				
 				visibility: visible;
+				
+				`
+				;}
+				var statisticsOfToDo = document.getElementsByClassName('statistics');
+				for (var i = 0; i < statisticsOfToDo.length; i++) {
+					statisticsOfToDo[i].style.cssText =
+				`
+				
+				display: none;
+				z-index: -1111;
+				visibility: hidden;
 				
 				`
 				;}
@@ -557,8 +592,8 @@
 				for (var i = 0; i < listOfToDo.length; i++) {
 					listOfToDo[i].style.cssText =
 				`
-				
-				height: 16vh;
+				font-size: 2vh;
+				height: 20vh;
 				
 				`
 				;}
@@ -577,6 +612,7 @@
 				`
 				
 				visibility: visible;
+				display: block;
 				
 				`
 				;}
@@ -920,13 +956,13 @@
 					addBtn[i].innerHTML = "Добавить";
 				}
 				document.getElementById('NameOfApp').innerHTML = "Список дел";
-				document.getElementById('Monday').innerHTML = "Понедельник";
-				document.getElementById('Tuesday').innerHTML = "Вторник";
-				document.getElementById('Wednesday').innerHTML = "Среда";
-				document.getElementById('Thursday').innerHTML = "Четверг";
-				document.getElementById('Friday').innerHTML = "Пятница";
-				document.getElementById('Saturday').innerHTML = "Суббота";
-				document.getElementById('Sunday').innerHTML = "Воскресенье";
+				document.getElementById('Monday').innerHTML = "Пн";
+				document.getElementById('Tuesday').innerHTML = "Вт";
+				document.getElementById('Wednesday').innerHTML = "Ср";
+				document.getElementById('Thursday').innerHTML = "Чт";
+				document.getElementById('Friday').innerHTML = "Пн";
+				document.getElementById('Saturday').innerHTML = "Сб";
+				document.getElementById('Sunday').innerHTML = "Вс";
 				document.getElementById('Menu').innerHTML = "Меню";
 				document.getElementById('beginNewWeek').innerHTML = "Начать новую неделю";
 				document.getElementById('deleteAll').innerHTML = "Удалить все";
@@ -961,13 +997,13 @@
 					addBtn[i].innerHTML = "Click";
 				}
 				document.getElementById('NameOfApp').innerHTML = "To-Do list";
-				document.getElementById('Monday').innerHTML = "Monday";
-				document.getElementById('Tuesday').innerHTML = "Tuesday";
-				document.getElementById('Wednesday').innerHTML = "Wednesday";
-				document.getElementById('Thursday').innerHTML = "Thursday";
-				document.getElementById('Friday').innerHTML = "Friday";
-				document.getElementById('Saturday').innerHTML = "Saturday";
-				document.getElementById('Sunday').innerHTML = "Sunday";
+				document.getElementById('Monday').innerHTML = "Mo";
+				document.getElementById('Tuesday').innerHTML = "Tu";
+				document.getElementById('Wednesday').innerHTML = "We";
+				document.getElementById('Thursday').innerHTML = "Th";
+				document.getElementById('Friday').innerHTML = "Fr";
+				document.getElementById('Saturday').innerHTML = "Sa";
+				document.getElementById('Sunday').innerHTML = "Su";
 				document.getElementById('Menu').innerHTML = "Menu";
 				document.getElementById('beginNewWeek').innerHTML = "Begin new week";
 				document.getElementById('deleteAll').innerHTML = "Delete all information";
@@ -978,22 +1014,14 @@
 				document.getElementById('Warning').innerHTML = "Are you sure?";
 				document.getElementById('deleteAllYes').innerHTML = "Yes";
 				document.getElementById('deleteAllNo').innerHTML = "No";
-
-				
-
 				document.getElementById('divOfLanguage').style.cssText =
 					`
-					
 					display: none;
 					z-index: -1111;
 					visibility: hidden;
-					
 					`;
-			
-			}
+			};
 		};
-       	
-
 	</script>
 </body>
 </html>
